@@ -1,0 +1,33 @@
+{% load static %}
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+<div class="card">
+	<div class="card">
+  		<div class="card-header text-warning ">
+   			<h3> Home </h3>
+  		</div>
+  		<div class="card-body pull-right">
+  			<h2 class="text-warning">FESTIVALS AND CAMPAIGNS</h2>
+  		</div>
+	</div>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'festivalapp/style.css' %}" />
+	<body background="{% static 'images.jpg' %}">
+	<div class="container">
+		<a href="{% url 'festivalapp:flist' %}"><button type="button" class="btn btn-primary btn-lg btn-block">List of Festivals</button></a>
+	</div>
+	<div class="container">
+		<a href="{% url 'festivalapp:elist' %}"><button type="button" class="btn btn-primary btn-lg btn-block">List of Campaigns</button></a>
+	</div>
+</div>

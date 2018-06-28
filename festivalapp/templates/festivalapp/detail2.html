@@ -1,0 +1,52 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+<h2>Detail Information</h2>
+<div class="container d-flex p-2">
+
+    <div class="header pull-right">
+
+        <table class="table table-compact table-bordered" id="festival_table">
+	       <thead class="thead-dark">
+	       	<tr>
+    		    <th>Festival</th>
+                <th>Date</th>
+                <th>Month</th>
+                <th>Year</th>
+    	   </tr>
+          </thead>
+    </div>
+
+        {% for festmodel in festmodel %}
+
+        <tr>
+            <td>{{ festmodel.festival_name }}</td>
+            <td>{{ festmodel.date }}</td>
+            <td>{{ festmodel.month }}</td>
+            <td>{{ festmodel.year }}</td>
+        </tr>   
+
+        {% endfor %}
+
+      </table>
+
+  <div class="container">
+    {% for festmodel in festmodel %}
+
+            <p>This festival is celeberated by {{ festmodel.religion }} religions.</p><break>
+            It is celebrated in {{ festmodel.state }}.<break>
+            <p>{{ festmodel.description }}</p><break>
+            Offers:- {{ festmodel.offers }}<break>
+    {% endfor %}
+  </div>
+
+<a href="{% url 'festivalapp:list' %}"><button class="glyphicon glyphicon-backward btn-danger btn-lg"></button></a>
+</div>

@@ -1,0 +1,63 @@
+
+fest1.html
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+<form action="{% url 'festivalapp:searched' %}" method="get" accept-charset="utf-8">
+{% csrf_token %}
+<h2>List</h2>
+<div class="container d-flex p-2">
+
+    <div class="header pull-right">
+        <input type="text" placeholder="Search.." id="obj" name="obj" value="{{ obj }}">
+        <button type="submit" class="glyphicon glyphicon-search btn-warning" value="obj"></button>
+    </div>
+
+    <table class="table table-compact table-bordered" id="festival_table">
+       <thead class="thead-dark">
+        <tr>
+            <th>Festival</th>
+            <th>Date</th>
+            <th>Month</th>
+            <th>Year</th>
+        </tr>
+    </thead>
+    {% for festmodel in festmodel %}
+        <tr>
+            <td id="obj" name="obj" value="{{ current_obj }}"><a href="{% url 'festivalapp:info' %}">{{ festmodel.festival_name }}</a></td>
+            <td>{{ festmodel.date }}</td>
+            <td>{{ festmodel.month }}</td>
+            <td>{{ festmodel.year }}</td>
+
+        </tr>
+    {% endfor %}
+
+    </table>
+</div>
+</forms>
+
+
+
+    #fest1 = festmodel.objects.filter(args=(festmodel.id)) 
+
+
+
+---------------==========================================-----------------------
+
+index
+/home/aish/fest/myproject/festivalapp/templates/festivalapp/images.jpg
+
+
+
+def finfo(request,fest_id):
+    fest1 = festmodel.objects.get(id=user_id)
+    template_name = 'festivalapp/fest2.html'
+    context_object_name = {'festmodel':fest1}
+    return render(request,template_name,context_object_name)

@@ -1,0 +1,60 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% csrf_token %}
+
+    <div class="card">
+        <div class="card-header text-warning ">
+            <h3> CAMPAIGNS</h3>
+        </div>
+        <div class="card-body pull-right">
+            <a href="{% url 'festivalapp:flist' %}"><h2 class="text-warning">FESTIVALS</h2></a>
+        </div>
+        <div class="card-body">
+            <a href="{% url 'festivalapp:main' %}"><h2 class="text-warning">HOME</h2></a>
+        </div>
+        <hr>
+    </div>
+
+<h2>List</h2>
+<div class="container d-flex p-2">
+
+    <div class="header pull-right">
+        <input type="text" placeholder="Search.." id="obj" name="obj" value="{{ obj }}">
+        <button type="submit" class="glyphicon glyphicon-search btn-warning" value="obj"></button>
+    </div>
+
+    <table class="table table-compact table-bordered" id="event_table">
+	   <thead class="thead-dark">
+	   	<tr>
+    		<th>Campaign Name</th>
+            <th>Festival</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Co-ordinator</th>
+            <th>Campaign_type</th>
+    	</tr>
+    </thead>
+    {% for event in campaign %}
+        <tr>
+            <td id="obj" name="obj" value="{{ current_obj }}"><a href="einfo/{{ event.id }}">{{ event.campaign_name }}</a></td>
+            <td>{{ event.festival }}</td>
+            <td>{{ event.start_date }}</td>
+            <td>{{ event.end_date }}</td>
+            <td>{{ event.co_ordinator }}</td>
+            <td>{{ event.campaign_type }}</td>
+
+        </tr>
+    {% endfor %}
+
+    </table>
+</div>
+</forms>
+<a href="{% url 'festivalapp:main' %}"><button class="glyphicon glyphicon-backward btn-danger btn-lg"></button></a>

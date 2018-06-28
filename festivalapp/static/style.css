@@ -1,0 +1,9 @@
+{% load static %}
+
+li a {
+    color: blue;
+}
+
+body {
+    background-image: : url{% static 'images.jpg' %};
+}

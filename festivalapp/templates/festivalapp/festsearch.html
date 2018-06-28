@@ -1,0 +1,61 @@
+<h1>{{ question.question_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+{% endfor %}
+<input type="submit" value="Vote" />
+</form method="post"
+
+
+
+'''    def get_queryset(self):
+        """
+        Excludes any questions that aren't published yet.
+        """
+        return festmodel.objects.all()
+
+def rend(request):
+	return render(request, "festivalapp/detail.html")
+
+'''
+'''
+def festindex(request):
+	template_name='festmodel'
+	return render(request,template_name)'''
+
+
+Fix sorting adding this code:
+
+{% if table.page %}
+  {% block pagination %}
+    {% bootstrap_pagination table.page url=request.get_full_path %}
+  {% endblock pagination %}
+  </div>
+{% endif %}
+
+            <th>Religion</th>
+            <th>Celeberated in</th>
+            <th>Description</th>
+            <th>Offers</th>
+
+
+            <td>{{ festmodel.religion }}</td>
+            <td>{{ festmodel.state }}</td>
+            <td>{{ festmodel.description }}</td>
+            <td>{{ festmodel.offers }}</td>
+
+
+
+                template_name = 'festivalapp/detail3.html'
+    context_object_name = {'festmodel':fest1}
+    return render(request,template_name,context_object_name)
+
+
+<!form action="{% url 'festivalapp:searched' %}" method="get" accept-charset="utf-8">
+
+<!form action="{% url 'festivalapp:searched' %}" method="get" accept-charset="utf-8">

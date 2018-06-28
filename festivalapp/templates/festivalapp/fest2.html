@@ -1,0 +1,61 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+    <div class="card">
+        <div class="card-header text-warning ">
+            <h3> {{ festmodel.festival_name }}</h3>
+        </div>
+        <div class="card-body pull-right">
+            <a href="/festivalapp/fest_campaign/{{ festmodel.id }}"><h2 class="text-warning">CAMPAIGNS</h2></a>
+        </div>
+        <div class="card-body">
+            <a href="{% url 'festivalapp:main' %}"><h2 class="text-warning">HOME</h2></a>
+        </div>
+        <hr>
+    </div>
+
+<div class="container d-flex p-2">
+
+    <div class="header pull-right">
+
+        <table class="table table-compact table-bordered" id="festival_table">
+	       <thead class="thead-dark">
+	       	<tr>
+    		    <th>Festival</th>
+                <th>Date</th>
+                <th>Month</th>
+                <th>Year</th>
+    	   </tr>
+          </thead>
+    </div>
+
+        <tr>
+            <td>{{ festmodel.festival_name }}</td>
+            <td>{{ festmodel.date }}</td>
+            <td>{{ festmodel.month }}</td>
+            <td>{{ festmodel.year }}</td>
+        </tr>   
+
+
+      </table>
+
+  <div class="container">
+            <p>This festival is celeberated by {{ festmodel.religion }} religions.</p><break>
+            It is celebrated in {{ festmodel.state }}.<break>
+            <p>{{ festmodel.description }}</p><break>
+            Offers:- {{ festmodel.offers }}<break>
+  
+  </div>
+  </div>
+
+<a href="{% url 'festivalapp:flist' %}"><button class="glyphicon glyphicon-backward btn-danger btn-lg"></button></a>
+
+<a href="/festivalapp/fest_campaign/{{ festmodel.id }}"><button class="glyphicon glyphicon-forward btn-primary btn-lg">View Campaings of {{ festmodel.festival_name }}</button></a>

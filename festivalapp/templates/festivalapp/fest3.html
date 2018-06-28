@@ -1,0 +1,46 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+<form method="post">
+{% csrf_token %}
+<h2>Search</h2>
+
+<div class="container d-flex p-2">
+    <div class="header pull-right">
+        <input type="text" placeholder="Search.." id="your_name" name="your_name">
+        <button type="submit" class="glyphicon glyphicon-search btn-warning"><a href="{% url 'festivalapp:fsearched' %}"></a></button>
+    </div>
+
+    {{ your_name }}
+        <table class="table table-compact table-bordered" id="festival_table">
+	       <thead class="thead-dark">
+	   	   <tr>
+    		<th>Festival</th>
+            <th>Date</th>
+            <th>Month</th>
+            <th>Year</th>
+    	   </tr>
+         </thead>
+
+            {% for festmodel in festmodel %}
+
+        <tr>
+            <td id="your_name" name="your_name"><a href="{% url 'festivalapp:finfo' %}">{{ festmodel.festival_name }}</a></td>
+            <td>{{ festmodel.date }}</td>
+            <td>{{ festmodel.month }}</td>
+            <td>{{ festmodel.year }}</td>
+        </tr>
+
+            {% endfor %}
+
+        </table>
+</div>
+</forms>

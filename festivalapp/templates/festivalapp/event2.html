@@ -1,0 +1,76 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+
+    <div class="card">
+        <div class="card-header text-warning ">
+            <h3> CAMPAIGNS </h3>
+        </div>
+        <div class="card-body pull-right">
+            <a href="{% url 'festivalapp:flist' %}"><h2 class="text-warning">FESTIVALS</h2></a>
+        </div>
+        <div class="card-body">
+            <a href="{% url 'festivalapp:main' %}"><h2 class="text-warning">HOME</h2></a>
+        </div>
+        <hr>
+    </div>
+
+<div class="container d-flex p-2">
+
+    <div class="header pull-right">
+
+           <table class="table table-compact table-bordered" id="event_table">
+       <thead class="thead-dark">
+        <tr>
+            <th>Campaign Name</th>
+            <th>Festival</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Co-ordinator</th>
+            <th>Campaign_type</th>
+        </tr>
+    </thead>
+        <tr>
+            <td>{{ campaign.campaign_name }}</td>
+            <td>{{ campaign.festival }}</td>
+            <td>{{ campaign.start_date }}</td>
+            <td>{{ campaign.end_date }}</td>
+            <td>{{ campaign.co_ordinator }}</td>
+            <td>{{ campaign.campaign_type }}</td>
+        </tr>
+    
+
+    </table>
+
+  <div class="container">
+            <table class="table table-compact table-bordered" id="event_table">
+       <thead class="thead-dark">
+        <tr>
+            <th>Email Content</th>
+            <th>Sma Content</th>
+            <th>Email Subject</th>
+            <th>Target Count</th>
+            <th>Target Leads Generated</th>
+        </tr>
+    </thead>
+        <tr>
+            <td>{{ campaign.email_content }}</td>
+            <td>{{ campaign.sms_content }}</td>
+            <td>{{ campaign.email_subject }}</td>
+            <td>{{ campaign.target_count }}</td>
+            <td>{{ campaign.leads_generated }}</td>
+        </tr>
+    
+
+    </table>
+
+<a href="{% url 'festivalapp:elist' %}"><button class="glyphicon glyphicon-backward btn-danger btn-lg"></button></a>
+</div>
